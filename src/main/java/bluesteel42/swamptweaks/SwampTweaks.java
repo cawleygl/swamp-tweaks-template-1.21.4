@@ -4,8 +4,12 @@ import bluesteel42.swamptweaks.block.ModBlocks;
 import bluesteel42.swamptweaks.entity.ModBoats;
 import bluesteel42.swamptweaks.item.ModItems;
 import bluesteel42.swamptweaks.registries.ModRegistries;
+import bluesteel42.swamptweaks.world.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.minecraft.block.AbstractFireBlock;
+import net.minecraft.block.FireBlock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +29,10 @@ public class SwampTweaks implements ModInitializer {
 		ModBlocks.initialize();
 		ModItems.initialize();
 		ModBoats.initialize();
+		ModWorldGeneration.generateModWorldGen();
 		ModRegistries.registerStrippables();
+		ModRegistries.registerFlammables();
+
 		LOGGER.info("Hello Fabric world!");
 	}
 }

@@ -13,8 +13,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
-    public ModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture, @Nullable BlockTagProvider blockTagProvider) {
-        super(output, completableFuture, blockTagProvider);
+    public ModItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
+        super(output, completableFuture);
     }
 
     @Override
@@ -25,6 +25,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.STRIPPED_SWAMP_LOG.asItem())
                 .add(ModBlocks.STRIPPED_SWAMP_WOOD.asItem());
 
+        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN).addTag(ModTags.Items.SWAMP_LOGS);
         getOrCreateTagBuilder(ItemTags.PLANKS).add(ModBlocks.SWAMP_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS).add(ModBlocks.SWAMP_STAIRS.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_SLABS).add(ModBlocks.SWAMP_SLAB.asItem());
@@ -40,6 +41,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.BOATS).add(ModBoats.SWAMP_BOAT.asItem());
         getOrCreateTagBuilder(ItemTags.CHEST_BOATS).add(ModBoats.SWAMP_CHEST_BOAT.asItem());
-        
+
+        getOrCreateTagBuilder(ItemTags.LEAVES).add(ModBlocks.SWAMP_LEAVES.asItem());
+        getOrCreateTagBuilder(ItemTags.SAPLINGS).add(ModBlocks.SWAMP_SAPLING.asItem());
     }
 }

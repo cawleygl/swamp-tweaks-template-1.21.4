@@ -7,7 +7,7 @@ import bluesteel42.swamptweaks.block.ModBlocks;
 import java.util.concurrent.CompletableFuture;
 
 public class ModLootTableProvider extends FabricBlockLootTableProvider {
-    protected ModLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+    public ModLootTableProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
         super(dataOutput, registryLookup);
     }
 
@@ -32,5 +32,9 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SWAMP_WALL_SIGN);
         addDrop(ModBlocks.SWAMP_HANGING_SIGN);
         addDrop(ModBlocks.SWAMP_WALL_HANGING_SIGN);
+
+        addDrop(ModBlocks.SWAMP_SAPLING);
+        addDrop(ModBlocks.POTTED_SWAMP_SAPLING, pottedPlantDrops(ModBlocks.SWAMP_SAPLING));
+        addDrop(ModBlocks.SWAMP_LEAVES, leavesDrops(ModBlocks.SWAMP_LEAVES, ModBlocks.SWAMP_SAPLING, 0.0625f));
     }
 }

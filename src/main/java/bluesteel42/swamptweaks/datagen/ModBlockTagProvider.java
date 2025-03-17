@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -22,6 +23,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.STRIPPED_SWAMP_LOG)
                 .add(ModBlocks.STRIPPED_SWAMP_WOOD);
 
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(ModTags.Blocks.SWAMP_LOGS);
         getOrCreateTagBuilder(BlockTags.PLANKS).add(ModBlocks.SWAMP_PLANKS);
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(ModBlocks.SWAMP_STAIRS);
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(ModBlocks.SWAMP_SLAB);
@@ -36,5 +38,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.WALL_SIGNS).add(ModBlocks.SWAMP_WALL_SIGN);
         getOrCreateTagBuilder(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.SWAMP_HANGING_SIGN);
         getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.SWAMP_WALL_HANGING_SIGN);
+
+        getOrCreateTagBuilder(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.SWAMP_WALL_HANGING_SIGN);
+
+        getOrCreateTagBuilder(BlockTags.LEAVES).add(ModBlocks.SWAMP_LEAVES);
+        getOrCreateTagBuilder(BlockTags.SAPLINGS).add(ModBlocks.SWAMP_SAPLING);
+        getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(ModBlocks.POTTED_SWAMP_SAPLING);
     }
 }

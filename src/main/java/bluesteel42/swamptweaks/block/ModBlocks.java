@@ -1,6 +1,7 @@
 package bluesteel42.swamptweaks.block;
 
 import bluesteel42.swamptweaks.SwampTweaks;
+import bluesteel42.swamptweaks.world.tree.ModSaplingGenerators;
 import com.terraformersmc.terraform.sign.api.block.TerraformHangingSignBlock;
 import com.terraformersmc.terraform.sign.api.block.TerraformSignBlock;
 import com.terraformersmc.terraform.sign.api.block.TerraformWallHangingSignBlock;
@@ -119,27 +120,27 @@ public class ModBlocks {
     public static final Identifier SWAMP_HANGING_SIGN_TEXTURE = Identifier.of(SwampTweaks.MOD_ID, "entity/signs/hanging/swamp");
     public static final Identifier SWAMP_HANGING_GUI_SIGN_TEXTURE = Identifier.of(SwampTweaks.MOD_ID, "textures/gui/hanging_signs/swamp");
     public static final Block SWAMP_STANDING_SIGN = registerBlockWithoutItem(
-            "cholla_standing_sign",
+            "swamp_standing_sign",
             settings -> new TerraformSignBlock(SWAMP_SIGN_TEXTURE, settings),
             AbstractBlock.Settings.copy(Blocks.OAK_SIGN)
                     .mapColor(MapColor.TERRACOTTA_CYAN)
     );
 
     public static final Block SWAMP_WALL_SIGN = registerBlockWithoutItem(
-            "cholla_wall_sign",
+            "swamp_wall_sign",
             settings -> new TerraformWallSignBlock(SWAMP_SIGN_TEXTURE, settings),
             AbstractBlock.Settings.copy(Blocks.OAK_SIGN).mapColor(MapColor.TERRACOTTA_CYAN).lootTable(SWAMP_STANDING_SIGN.getLootTableKey()).overrideTranslationKey(SWAMP_STANDING_SIGN.getTranslationKey())
     );
 
     public static final Block SWAMP_HANGING_SIGN = registerBlockWithoutItem(
-            "cholla_hanging_sign",
+            "swamp_hanging_sign",
             settings -> new TerraformHangingSignBlock(SWAMP_HANGING_SIGN_TEXTURE, SWAMP_HANGING_GUI_SIGN_TEXTURE, settings),
             AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN)
                     .mapColor(MapColor.TERRACOTTA_CYAN)
     );
 
     public static final Block SWAMP_WALL_HANGING_SIGN = registerBlockWithoutItem(
-            "cholla_hanging_wall_sign",
+            "swamp_hanging_wall_sign",
             settings -> new TerraformWallHangingSignBlock(SWAMP_HANGING_SIGN_TEXTURE, SWAMP_HANGING_GUI_SIGN_TEXTURE, settings),
             AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN).mapColor(MapColor.TERRACOTTA_CYAN).lootTable(SWAMP_HANGING_SIGN.getLootTableKey()).overrideTranslationKey(SWAMP_HANGING_SIGN.getTranslationKey())
     );
@@ -151,6 +152,22 @@ public class ModBlocks {
     public static final BlockFamily SWAMP_HANGING_SIGN_FAMILY = BlockFamilies.register(ModBlocks.STRIPPED_SWAMP_LOG)
             .sign(ModBlocks.SWAMP_HANGING_SIGN, ModBlocks.SWAMP_WALL_HANGING_SIGN)
             .group("wooden").unlockCriterionName("has_planks").build();
+
+    public static final Block SWAMP_LEAVES = registerNonOpaqueBlock(
+            "swamp_leaves",
+            LeavesBlock::new,
+            Blocks.createLeavesSettings(BlockSoundGroup.GRASS)
+    );
+    public static final Block SWAMP_SAPLING = registerNonOpaqueBlock(
+            "swamp_sapling",
+            settings -> new SaplingBlock(ModSaplingGenerators.SWAMP, settings),
+            AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)
+    );
+    public static final Block POTTED_SWAMP_SAPLING = registerNonOpaqueBlock(
+            "potted_swamp_sapling",
+            settings -> new FlowerPotBlock(SWAMP_SAPLING, settings),
+            Blocks.createFlowerPotSettings()
+    );
 
     private static Block registerBlock(String path, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
         final Identifier identifier = Identifier.of(SwampTweaks.MOD_ID, path);
@@ -199,6 +216,11 @@ public class ModBlocks {
                     itemGroup.addAfter(Items.PALE_OAK_BUTTON, ModBlocks.SWAMP_WOOD);
                     itemGroup.addAfter(Items.PALE_OAK_BUTTON, ModBlocks.SWAMP_LOG);
                 });
-
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL)
+                .register((itemGroup) -> {
+                    itemGroup.addAfter(Items.PALE_OAK_LOG, ModBlocks.SWAMP_LOG);
+                    itemGroup.addAfter(Items.PALE_OAK_LEAVES, ModBlocks.SWAMP_LEAVES);
+                    itemGroup.addAfter(Items.PALE_OAK_SAPLING, ModBlocks.SWAMP_SAPLING);
+                });
     }
 }
