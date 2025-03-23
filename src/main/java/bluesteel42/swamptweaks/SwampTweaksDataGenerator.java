@@ -2,6 +2,7 @@ package bluesteel42.swamptweaks;
 
 import bluesteel42.swamptweaks.datagen.*;
 import bluesteel42.swamptweaks.world.ModConfiguredFeatures;
+import bluesteel42.swamptweaks.world.ModPlacedFeatures;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
@@ -21,5 +22,6 @@ public class SwampTweaksDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 	}
 }

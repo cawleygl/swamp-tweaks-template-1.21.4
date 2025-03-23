@@ -25,6 +25,8 @@ import java.util.function.Function;
 
 public class ModBlocks {
 
+    public static final Block MUDDY_GRASS_BLOCK = registerNonOpaqueBlock("muddy_grass_block", MuddyGrassBlock::new, AbstractBlock.Settings.create().mapColor(MapColor.PALE_GREEN).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.MUD));
+
     public static final Block SWAMP_LOG = registerBlock("swamp_log", PillarBlock::new, Blocks.createLogSettings(MapColor.TERRACOTTA_CYAN, MapColor.GREEN, BlockSoundGroup.WOOD));
     public static final Block SWAMP_WOOD = registerBlock("swamp_wood", PillarBlock::new, Blocks.createLogSettings(MapColor.GREEN, MapColor.GREEN, BlockSoundGroup.WOOD));
     public static final Block STRIPPED_SWAMP_LOG = registerBlock("stripped_swamp_log", PillarBlock::new, Blocks.createLogSettings(MapColor.TERRACOTTA_CYAN, MapColor.TERRACOTTA_CYAN, BlockSoundGroup.WOOD));
@@ -221,6 +223,7 @@ public class ModBlocks {
                     itemGroup.addAfter(Items.PALE_OAK_LOG, ModBlocks.SWAMP_LOG);
                     itemGroup.addAfter(Items.PALE_OAK_LEAVES, ModBlocks.SWAMP_LEAVES);
                     itemGroup.addAfter(Items.PALE_OAK_SAPLING, ModBlocks.SWAMP_SAPLING);
+                    itemGroup.addBefore(Items.MUD, ModBlocks.MUDDY_GRASS_BLOCK);
                 });
     }
 }

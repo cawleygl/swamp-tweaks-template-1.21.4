@@ -17,6 +17,20 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+        getOrCreateTagBuilder(BlockTags.ANIMALS_SPAWNABLE_ON).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.DIRT).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.FOXES_SPAWNABLE_ON).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.FROGS_SPAWNABLE_ON).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.PARROTS_SPAWNABLE_ON).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.RABBITS_SPAWNABLE_ON).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.SNIFFER_DIGGABLE_BLOCK).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.VALID_SPAWN).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.WOLVES_SPAWNABLE_ON).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH).add(ModBlocks.MUDDY_GRASS_BLOCK);
+        getOrCreateTagBuilder(BlockTags.SNOW_LAYER_CAN_SURVIVE_ON).add(ModBlocks.MUDDY_GRASS_BLOCK);
+
         getOrCreateTagBuilder(ModTags.Blocks.SWAMP_LOGS)
                 .add(ModBlocks.SWAMP_LOG)
                 .add(ModBlocks.SWAMP_WOOD)

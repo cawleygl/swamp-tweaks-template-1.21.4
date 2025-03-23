@@ -31,6 +31,7 @@ public class SwampTweaks implements ModInitializer {
 		ModBoats.initialize();
 		ModWorldGeneration.generateModWorldGen();
 		ModRegistries.registerStrippables();
+		ModRegistries.registerCompostables();
 		ModRegistries.registerFlammables();
 
 		LOGGER.info("Hello Fabric world!");

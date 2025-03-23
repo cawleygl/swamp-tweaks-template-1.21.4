@@ -7,6 +7,7 @@ import bluesteel42.swamptweaks.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,6 +20,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+        getOrCreateTagBuilder(ItemTags.DIRT).add(ModBlocks.MUDDY_GRASS_BLOCK.asItem());
+
         getOrCreateTagBuilder(ModTags.Items.SWAMP_LOGS)
                 .add(ModBlocks.SWAMP_LOG.asItem())
                 .add(ModBlocks.SWAMP_WOOD.asItem())

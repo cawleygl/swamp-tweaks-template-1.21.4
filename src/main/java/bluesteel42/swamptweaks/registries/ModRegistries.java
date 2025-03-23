@@ -1,13 +1,22 @@
 package bluesteel42.swamptweaks.registries;
 
 import bluesteel42.swamptweaks.block.ModBlocks;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.MudBlock;
 
 public class ModRegistries {
+
     public static void registerStrippables() {
         StrippableBlockRegistry.register(ModBlocks.SWAMP_WOOD, ModBlocks.STRIPPED_SWAMP_WOOD);
         StrippableBlockRegistry.register(ModBlocks.SWAMP_LOG, ModBlocks.STRIPPED_SWAMP_LOG);
+    }
+
+    public static void registerCompostables() {
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.SWAMP_LEAVES, 0.3F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.SWAMP_SAPLING, 0.3F);
     }
 
     public static void registerFlammables() {
@@ -22,4 +31,5 @@ public class ModRegistries {
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SWAMP_STAIRS, 5, 20);
         FlammableBlockRegistry.getDefaultInstance().add(ModBlocks.SWAMP_LEAVES, 30, 60);
     }
+
 }

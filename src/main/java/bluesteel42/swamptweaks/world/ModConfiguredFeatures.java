@@ -2,35 +2,23 @@ package bluesteel42.swamptweaks.world;
 
 import bluesteel42.swamptweaks.SwampTweaks;
 import bluesteel42.swamptweaks.block.ModBlocks;
-import com.google.common.collect.ImmutableList;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.world.gen.feature.*;
 
 public class ModConfiguredFeatures {
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> SWAMP_KEY = registerKey("swamp");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SWAMP_MUD_KEY = registerKey("swamp_mud");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SWAMP_MUDDY_GRASS_KEY = registerKey("swamp_muddy_grass");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
-        register(context, SWAMP_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(ModBlocks.SWAMP_LOG),
-                new StraightTrunkPlacer( 5, 3, 0),
-                BlockStateProvider.of(ModBlocks.SWAMP_LEAVES),
-                new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), 3),
-                new TwoLayersFeatureSize(1, 0, 1))
-                .decorators(ImmutableList.of(new LeavesVineTreeDecorator(0.25F))).build()
-        );
+
+        register(context, SWAMP_MUD_KEY, Feature.ORE, new OreFeatureConfig(new BlockMatchRuleTest(Blocks.DIRT), Blocks.MUD.getDefaultState(), 55));
+        register(context, SWAMP_MUDDY_GRASS_KEY, Feature.ORE, new OreFeatureConfig(new BlockMatchRuleTest(Blocks.GRASS_BLOCK), ModBlocks.MUDDY_GRASS_BLOCK.getDefaultState(), 55));
 
     }
 
