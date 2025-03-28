@@ -33,6 +33,7 @@ public class SwampTweaks implements ModInitializer {
 		ModRegistries.registerStrippables();
 		ModRegistries.registerCompostables();
 		ModRegistries.registerFlammables();
+		ModRegistries.registerTrades();
 
 		LOGGER.info("Hello Fabric world!");
 	}
